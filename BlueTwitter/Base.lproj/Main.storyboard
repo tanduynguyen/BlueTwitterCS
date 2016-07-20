@@ -55,7 +55,7 @@
         <!--Twitters-->
         <scene sceneID="Cwu-ID-SVC">
             <objects>
-                <viewController id="1PL-Y5-2mr" customClass="TwitterViewController" customModule="BlueTwitterCS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1PL-Y5-2mr" customClass="TweetsViewController" customModule="BlueTwitterCS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="osL-RM-hb8"/>
                         <viewControllerLayoutGuide type="bottom" id="Knp-Rg-oEB"/>
@@ -87,7 +87,13 @@
                             <constraint firstAttribute="trailing" secondItem="QtB-DS-1Sd" secondAttribute="trailing" id="liO-4r-tKx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Twitters" id="Hqj-Cq-J0s"/>
+                    <navigationItem key="navigationItem" title="Twitters" id="Hqj-Cq-J0s">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ZWV-r3-zcc">
+                            <connections>
+                                <action selector="onLogout:" destination="1PL-Y5-2mr" id="xLJ-gt-Bi5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QtB-DS-1Sd" id="1KL-AU-fw9"/>
                     </connections>
@@ -118,7 +124,7 @@
         <!--Navigation Controller-->
         <scene sceneID="lY4-Yj-PlE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UAI-Te-iSJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UAI-Te-iSJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDd-4T-AmD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I24-T1-cPo">

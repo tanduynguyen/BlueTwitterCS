@@ -1,5 +1,5 @@
 //
-//  TwitterViewController.swift
+//  TweetsViewController.swift
 //  BlueTwitterCS
 //
 //  Created by Duy Nguyen on 20/7/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TwitterViewController: UIViewController {
+class TweetsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,9 +28,15 @@ class TwitterViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    @IBAction func onLogout(sender: AnyObject) {
+        
+        TwitterClient.shareInstance.logout()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(User.userDidLogoutNotificationKey, object: nil)
+    }
 }
 
-extension TwitterViewController: UITableViewDataSource {
+extension TweetsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return twitters?.count ?? 0

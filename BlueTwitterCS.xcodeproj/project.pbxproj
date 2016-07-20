@@ -15,8 +15,9 @@
 		04A9F59F1D3F475B00C104C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F59D1D3F475B00C104C8 /* User.swift */; };
 		04A9F5A11D3F526800C104C8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A01D3F526800C104C8 /* Configuration.swift */; };
 		04A9F5A41D3F654000C104C8 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A31D3F654000C104C8 /* TwitterClient.swift */; };
-		04A9F5A71D3F70B300C104C8 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A61D3F70B300C104C8 /* TwitterViewController.swift */; };
+		04A9F5A71D3F70B300C104C8 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */; };
 		04A9F5A91D3F725300C104C8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A81D3F725300C104C8 /* LoginViewController.swift */; };
+		04A9F5AB1D3F79F000C104C8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5AA1D3F79F000C104C8 /* README.md */; };
 		A8BA21E99BE0593435D59B43 /* Pods_BlueTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +32,9 @@
 		04A9F59D1D3F475B00C104C8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04A9F5A01D3F526800C104C8 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		04A9F5A31D3F654000C104C8 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
-		04A9F5A61D3F70B300C104C8 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
+		04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		04A9F5A81D3F725300C104C8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		04A9F5AA1D3F79F000C104C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F8DD7AF27602DC431092C7 /* Pods-BlueTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter.release.xcconfig"; sourceTree = "<group>"; };
 		EB5B176CBEB0C328666A1919 /* Pods-BlueTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 		049C2D751D3E5C8D00915EB6 = {
 			isa = PBXGroup;
 			children = (
+				04A9F5AA1D3F79F000C104C8 /* README.md */,
 				049C2D801D3E5C8D00915EB6 /* BlueTwitter */,
 				049C2D7F1D3E5C8D00915EB6 /* Products */,
 				58077C087CE7844655D5F43A /* Pods */,
@@ -104,7 +107,7 @@
 		04A9F5A51D3F709D00C104C8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				04A9F5A61D3F70B300C104C8 /* TwitterViewController.swift */,
+				04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */,
 				04A9F5A81D3F725300C104C8 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
@@ -255,7 +258,8 @@
 				04A9F5A91D3F725300C104C8 /* LoginViewController.swift in Sources */,
 				04A9F5A41D3F654000C104C8 /* TwitterClient.swift in Sources */,
 				049C2D821D3E5C8D00915EB6 /* AppDelegate.swift in Sources */,
-				04A9F5A71D3F70B300C104C8 /* TwitterViewController.swift in Sources */,
+				04A9F5AB1D3F79F000C104C8 /* README.md in Sources */,
+				04A9F5A71D3F70B300C104C8 /* TweetsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

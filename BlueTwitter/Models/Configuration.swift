@@ -14,4 +14,5 @@ class Configuration: NSObject {
     static var consumerSecret = "Um1oj2plEOeXBXFFOau3SoYVR0KCVEhp9b9dc6PHkd9qfCqS9T"
 
     static var baseURL = "https://api.twitter.com"
+    
 }

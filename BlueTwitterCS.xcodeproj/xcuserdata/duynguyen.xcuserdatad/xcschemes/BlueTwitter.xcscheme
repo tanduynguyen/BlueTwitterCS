@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "049C2D7D1D3E5C8D00915EB6"
-               BuildableName = "BlueTwitter.app"
-               BlueprintName = "BlueTwitter"
-               ReferencedContainer = "container:BlueTwitter.xcodeproj">
+               BuildableName = "BlueTwitterCS.app"
+               BlueprintName = "BlueTwitterCS"
+               ReferencedContainer = "container:BlueTwitterCS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "049C2D7D1D3E5C8D00915EB6"
-            BuildableName = "BlueTwitter.app"
-            BlueprintName = "BlueTwitter"
-            ReferencedContainer = "container:BlueTwitter.xcodeproj">
+            BuildableName = "BlueTwitterCS.app"
+            BlueprintName = "BlueTwitterCS"
+            ReferencedContainer = "container:BlueTwitterCS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "049C2D7D1D3E5C8D00915EB6"
-            BuildableName = "BlueTwitter.app"
-            BlueprintName = "BlueTwitter"
-            ReferencedContainer = "container:BlueTwitter.xcodeproj">
+            BuildableName = "BlueTwitterCS.app"
+            BlueprintName = "BlueTwitterCS"
+            ReferencedContainer = "container:BlueTwitterCS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "049C2D7D1D3E5C8D00915EB6"
-            BuildableName = "BlueTwitter.app"
-            BlueprintName = "BlueTwitter"
-            ReferencedContainer = "container:BlueTwitter.xcodeproj">
+            BuildableName = "BlueTwitterCS.app"
+            BlueprintName = "BlueTwitterCS"
+            ReferencedContainer = "container:BlueTwitterCS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

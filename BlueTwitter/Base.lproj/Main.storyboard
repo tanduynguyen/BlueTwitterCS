@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="702" y="355"/>
         </scene>
-        <!--Twitters-->
+        <!--Home-->
         <scene sceneID="Cwu-ID-SVC">
             <objects>
                 <viewController id="1PL-Y5-2mr" customClass="TweetsViewController" customModule="BlueTwitterCS" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,15 +64,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-DS-1Sd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-DS-1Sd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Jkr-rL-fah">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="91" id="Jkr-rL-fah">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jkr-rL-fah" id="95c-kX-cyk">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -87,12 +87,13 @@
                             <constraint firstAttribute="trailing" secondItem="QtB-DS-1Sd" secondAttribute="trailing" id="liO-4r-tKx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Twitters" id="Hqj-Cq-J0s">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ZWV-r3-zcc">
+                    <navigationItem key="navigationItem" title="Home" id="Hqj-Cq-J0s">
+                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="ZWV-r3-zcc">
                             <connections>
                                 <action selector="onLogout:" destination="1PL-Y5-2mr" id="xLJ-gt-Bi5"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="Tq9-9z-plu"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QtB-DS-1Sd" id="1KL-AU-fw9"/>
@@ -105,7 +106,7 @@
         <!--Navigation Controller-->
         <scene sceneID="uOU-e4-IsX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gZC-B9-ce2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gZC-B9-ce2" customClass="NavigationController" customModule="BlueTwitterCS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4zv-io-HP6">
@@ -124,12 +125,15 @@
         <!--Navigation Controller-->
         <scene sceneID="lY4-Yj-PlE">
             <objects>
-                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UAI-Te-iSJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="UAI-Te-iSJ" customClass="NavigationController" customModule="BlueTwitterCS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDd-4T-AmD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I24-T1-cPo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

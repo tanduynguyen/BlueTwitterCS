@@ -18,6 +18,7 @@
 		04A9F5A71D3F70B300C104C8 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */; };
 		04A9F5A91D3F725300C104C8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A81D3F725300C104C8 /* LoginViewController.swift */; };
 		04A9F5AB1D3F79F000C104C8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5AA1D3F79F000C104C8 /* README.md */; };
+		04AB0BF81D407F9B0022F65F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB0BF71D407F9B0022F65F /* NavigationController.swift */; };
 		A8BA21E99BE0593435D59B43 /* Pods_BlueTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		04A9F5A81D3F725300C104C8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04A9F5AA1D3F79F000C104C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04AB0BF71D407F9B0022F65F /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F8DD7AF27602DC431092C7 /* Pods-BlueTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter.release.xcconfig"; sourceTree = "<group>"; };
 		EB5B176CBEB0C328666A1919 /* Pods-BlueTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */,
 				04A9F5A81D3F725300C104C8 /* LoginViewController.swift */,
+				04AB0BF71D407F9B0022F65F /* NavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				04A9F5A11D3F526800C104C8 /* Configuration.swift in Sources */,
 				04A9F59E1D3F475B00C104C8 /* Tweet.swift in Sources */,
 				04A9F5A91D3F725300C104C8 /* LoginViewController.swift in Sources */,
+				04AB0BF81D407F9B0022F65F /* NavigationController.swift in Sources */,
 				04A9F5A41D3F654000C104C8 /* TwitterClient.swift in Sources */,
 				049C2D821D3E5C8D00915EB6 /* AppDelegate.swift in Sources */,
 				04A9F5AB1D3F79F000C104C8 /* README.md in Sources */,

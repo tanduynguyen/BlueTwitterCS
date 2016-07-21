@@ -10,6 +10,7 @@ import UIKit
 
 class Tweet: NSObject {
     var user: User?
+    var userMention: User?
     var text: String?
     var createdAtString: String?
     var createdAt: NSDate?
@@ -42,11 +43,17 @@ class Tweet: NSObject {
             timeSinceCreated = String(Int(elapsedTime / 60 / 60 / 24)) + "d"
         }
         
+        if let user_mention = dictionary.valueForKeyPath("retweeted_status.user") {
+            userMention = user
+            user = User(dictionary: user_mention as! NSDictionary)
+        }
     }
     
     class func tweetsWithArray(array: [NSDictionary]) -> [Tweet] {
         var tweets = [Tweet]()
         
+//        NSLog("%@", array)
+
         for dict in array {
             tweets.append(Tweet(dictionary: dict))
         }

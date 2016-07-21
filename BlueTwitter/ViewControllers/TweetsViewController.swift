@@ -20,11 +20,21 @@ class TweetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        
+        setupTableView()
         setupSplashScreen()
         setupPullRefresh()
         revealingSplashView?.startAnimation()
+    }
+    
+    func setupTableView() {
+        
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let identifier = String(TweetTableViewCell)
+        tableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
+        
     }
     
     func setupSplashScreen() {
@@ -79,9 +89,17 @@ extension TweetsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+        let identifier = String(TweetTableViewCell)
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? TweetTableViewCell
+        
         let tweet = twitters![indexPath.row] as Tweet
-        cell?.textLabel?.text = tweet.text
+
+//        if cell == nil {
+//            tableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
+//            cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? TweetTableViewCell
+//        }
+        
+        cell?.tweet = tweet
         
         return cell!
     }

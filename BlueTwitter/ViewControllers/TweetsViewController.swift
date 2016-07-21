@@ -15,41 +15,48 @@ class TweetsViewController: UIViewController {
     
     var twitters: [Tweet]?
     var revealingSplashView: RevealingSplashView!
-    
+    var refreshControl: UIRefreshControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         
-        self.revealingSplashView = setupSplashScreen()
-        getHomeTimeline()
+        setupSplashScreen()
+        setupPullRefresh()
+        revealingSplashView?.startAnimation()
     }
     
-    func setupSplashScreen() -> RevealingSplashView {
+    func setupSplashScreen() {
         
         //Initialize a revealing Splash with with the iconImage, the initial size and the background color
-        let splashView = RevealingSplashView(iconImage: UIImage(named: "twitterLogo")!,iconInitialSize: CGSizeMake(70, 70), backgroundColor: Colors.primary)
+        revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "twitterLogo")!,iconInitialSize: CGSizeMake(70, 70), backgroundColor: Colors.primary)
         
         //Adds the revealing splash view as a sub view
-        self.view.addSubview(splashView)
-        
-        return splashView
+        self.view.addSubview(revealingSplashView)
     }
     
-    func getHomeTimeline() {
+    func setupPullRefresh() {
+        // Initialize a UIRefreshControl
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(getHomeTimeline(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        getHomeTimeline(nil)
+    }
+    
+    func getHomeTimeline(refreshControl: UIRefreshControl?) {
         
         TwitterClient.shareInstance.homeTimeline({ (twitters) in
             
             self.twitters = twitters
             self.tableView.reloadData()
             
-            //Starts animation
-            self.revealingSplashView.startAnimation() {
-                print("Completed")
-            }
+            refreshControl?.endRefreshing()
+            
         }) { (error) in
             print("\(error.localizedDescription)")
         }
+            
 
     }
 }

@@ -19,7 +19,9 @@
 		04A9F5A91D3F725300C104C8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A81D3F725300C104C8 /* LoginViewController.swift */; };
 		04A9F5AB1D3F79F000C104C8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5AA1D3F79F000C104C8 /* README.md */; };
 		04AB0BF81D407F9B0022F65F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB0BF71D407F9B0022F65F /* NavigationController.swift */; };
-		A8BA21E99BE0593435D59B43 /* Pods_BlueTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */; };
+		04AB0BFB1D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 04AB0BF91D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig */; };
+		04AB0BFC1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 04AB0BFA1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig */; };
+		D12E10DDCFAD72485E49DA1A /* Pods_BlueTwitterCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F72376F5C93D4C77BD5E821 /* Pods_BlueTwitterCS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +39,9 @@
 		04A9F5A81D3F725300C104C8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04A9F5AA1D3F79F000C104C8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		04AB0BF71D407F9B0022F65F /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8F8DD7AF27602DC431092C7 /* Pods-BlueTwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter.release.xcconfig"; sourceTree = "<group>"; };
-		EB5B176CBEB0C328666A1919 /* Pods-BlueTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter.debug.xcconfig"; sourceTree = "<group>"; };
+		04AB0BF91D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitterCS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitterCS/Pods-BlueTwitterCS.debug.xcconfig"; sourceTree = "<group>"; };
+		04AB0BFA1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-BlueTwitterCS.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlueTwitterCS/Pods-BlueTwitterCS.release.xcconfig"; sourceTree = "<group>"; };
+		7F72376F5C93D4C77BD5E821 /* Pods_BlueTwitterCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueTwitterCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8BA21E99BE0593435D59B43 /* Pods_BlueTwitter.framework in Frameworks */,
+				D12E10DDCFAD72485E49DA1A /* Pods_BlueTwitterCS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +121,8 @@
 		58077C087CE7844655D5F43A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EB5B176CBEB0C328666A1919 /* Pods-BlueTwitter.debug.xcconfig */,
-				E8F8DD7AF27602DC431092C7 /* Pods-BlueTwitter.release.xcconfig */,
+				04AB0BF91D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig */,
+				04AB0BFA1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -128,7 +130,7 @@
 		6E49B46038E2E4AA9758D7DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				12D804776F0098FBD91673AA /* Pods_BlueTwitter.framework */,
+				7F72376F5C93D4C77BD5E821 /* Pods_BlueTwitterCS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,9 +196,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AB0BFC1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig in Resources */,
 				049C2D8C1D3E5C8D00915EB6 /* LaunchScreen.storyboard in Resources */,
 				049C2D891D3E5C8D00915EB6 /* Assets.xcassets in Resources */,
 				049C2D871D3E5C8D00915EB6 /* Main.storyboard in Resources */,
+				04AB0BFB1D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlueTwitterCS/Pods-BlueTwitterCS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		54ACA8DD07E4444796DC40AB /* Embed Pods Frameworks */ = {
@@ -230,7 +234,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlueTwitter/Pods-BlueTwitter-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlueTwitterCS/Pods-BlueTwitterCS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F8B543434395C80604A986DC /* Check Pods Manifest.lock */ = {
@@ -374,7 +378,7 @@
 		};
 		049C2D911D3E5C8D00915EB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB5B176CBEB0C328666A1919 /* Pods-BlueTwitter.debug.xcconfig */;
+			baseConfigurationReference = 04AB0BF91D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BlueTwitter/Info.plist;
@@ -386,7 +390,7 @@
 		};
 		049C2D921D3E5C8D00915EB6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8F8DD7AF27602DC431092C7 /* Pods-BlueTwitter.release.xcconfig */;
+			baseConfigurationReference = 04AB0BFA1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BlueTwitter/Info.plist;

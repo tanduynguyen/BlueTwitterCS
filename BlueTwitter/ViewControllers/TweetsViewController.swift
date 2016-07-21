@@ -7,26 +7,54 @@
 //
 
 import UIKit
+import RevealingSplashView
 
 class TweetsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var twitters: [Tweet]?
+    var revealingSplashView: RevealingSplashView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        
+        self.revealingSplashView = setupSplashScreen()
+        getHomeTimeline()
+    }
+    
+    func setupSplashScreen() -> RevealingSplashView {
+        
+        //Initialize a revealing Splash with with the iconImage, the initial size and the background color
+        let splashView = RevealingSplashView(iconImage: UIImage(named: "twitterLogo")!,iconInitialSize: CGSizeMake(70, 70), backgroundColor: Colors.primary)
+        
+        //Adds the revealing splash view as a sub view
+        self.view.addSubview(splashView)
+        
+        return splashView
+    }
+    
+    func getHomeTimeline() {
         
         TwitterClient.shareInstance.homeTimeline({ (twitters) in
             
             self.twitters = twitters
             self.tableView.reloadData()
-            }) { (error) in
-                print("\(error.localizedDescription)")
+            
+            //Starts animation
+            self.revealingSplashView.startAnimation() {
+                print("Completed")
+            }
+        }) { (error) in
+            print("\(error.localizedDescription)")
         }
-        
-        tableView.dataSource = self
+
     }
+}
+
+extension TweetsViewController {
     
     @IBAction func onLogout(sender: AnyObject) {
         

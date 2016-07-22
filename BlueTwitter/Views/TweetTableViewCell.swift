@@ -18,9 +18,16 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var favCountLabel: UILabel!
     @IBOutlet weak var timeSinceCreatedLabel: UILabel!
     @IBOutlet weak var profileView: UIImageView!
-    
     @IBOutlet weak var userMentionLable: UILabel!
+    @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var retweetedIcon: UIImageView!
+    @IBOutlet weak var favIcon: UIImageView!
+    
     @IBOutlet weak var verticalTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var photoHeightEqual0: NSLayoutConstraint!
+    @IBOutlet weak var ratioPhotoView: NSLayoutConstraint!
+    
     var tweet: Tweet! {
         didSet {
             
@@ -48,6 +55,35 @@ class TweetTableViewCell: UITableViewCell {
                 }
             }
             
+            if let url = tweet.mediaURL {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.photoView.setImageWithURL(url)
+                })
+
+                photoHeightEqual0.active = false
+                ratioPhotoView.active = true
+            } else {
+                photoHeightEqual0.active = true
+                ratioPhotoView.active = false
+            }
+            
+            if tweet.isRetweeted {
+                retweetedIcon.image = UIImage(named: "retweet-action-on")
+                retweetCountLabel.textColor = Configuration.Colors.green
+            } else {
+                retweetedIcon.image = UIImage(named: "retweet-action")
+                retweetCountLabel.textColor = UIColor.darkGrayColor()
+            }
+            
+            if tweet.isFavorited {
+                favIcon.image = UIImage(named: "like-action-on")
+                favCountLabel.textColor = Configuration.Colors.pink
+            } else {
+                favIcon.image = UIImage(named: "like-action")
+                favCountLabel.textColor = UIColor.darkGrayColor()
+            }
+            
+            updateConstraints()
         }
     }
     

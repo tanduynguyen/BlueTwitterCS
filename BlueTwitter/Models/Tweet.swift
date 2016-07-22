@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension Bool {
+    init<T : IntegerType>(_ integer: T) {
+        if integer == 0 {
+            self.init(false)
+        } else {
+            self.init(true)
+        }
+    }
+}
+
 class Tweet: NSObject {
     var user: User?
     var userMention: User?
@@ -15,6 +25,10 @@ class Tweet: NSObject {
     var createdAtString: String?
     var createdAt: NSDate?
     var timeSinceCreated: String?
+    var inReplyToScreenName: String?
+    var mediaURL: NSURL?
+    var isRetweeted: Bool
+    var isFavorited: Bool
     
     var retweetCount = 0
     var favCount = 0
@@ -27,7 +41,10 @@ class Tweet: NSObject {
         createdAtString = dictionary["created_at"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int)!
         favCount = (dictionary["favorite_count"] as? Int)!
-        
+        inReplyToScreenName = dictionary["in_reply_to_screen_name"] as? String
+        isRetweeted = Bool(dictionary["retweeted"] as! Int)
+        isFavorited = Bool(dictionary["favorited"] as! Int)
+
         let formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)
@@ -46,6 +63,16 @@ class Tweet: NSObject {
         if let user_mention = dictionary.valueForKeyPath("retweeted_status.user") {
             userMention = user
             user = User(dictionary: user_mention as! NSDictionary)
+        }
+        
+        if inReplyToScreenName != nil {
+            
+        }
+        
+        if let mediaItem = dictionary.valueForKeyPath("extended_entities.media.media_url") as? NSArray {
+            if let item = mediaItem.firstObject {
+                mediaURL = NSURL(string: item as! String)
+            }
         }
     }
     

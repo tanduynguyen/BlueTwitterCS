@@ -40,7 +40,7 @@ class TweetsViewController: UIViewController {
     func setupSplashScreen() {
         
         //Initialize a revealing Splash with with the iconImage, the initial size and the background color
-        revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "twitterLogo")!,iconInitialSize: CGSizeMake(70, 70), backgroundColor: Colors.primary)
+        revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "twitterLogo")!,iconInitialSize: CGSizeMake(70, 70), backgroundColor: Configuration.Colors.primary)
         
         //Adds the revealing splash view as a sub view
         self.view.addSubview(revealingSplashView)

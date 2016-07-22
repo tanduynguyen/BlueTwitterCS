@@ -83,7 +83,11 @@
                                 <action selector="onLogout:" destination="1PL-Y5-2mr" id="xLJ-gt-Bi5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="Tq9-9z-plu"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="Tq9-9z-plu">
+                            <connections>
+                                <segue destination="Uig-XX-3kG" kind="modal" id="blm-Vn-aYr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QtB-DS-1Sd" id="1KL-AU-fw9"/>
@@ -92,6 +96,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9C-XK-JaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1739" y="355"/>
+        </scene>
+        <!--Tweet-->
+        <scene sceneID="ChV-hp-IHw">
+            <objects>
+                <viewController id="NSd-MT-uEp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GYs-My-xxh"/>
+                        <viewControllerLayoutGuide type="bottom" id="GrN-37-7Of"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F7k-ob-xVG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tweet" id="YvW-DF-zGr">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="UPT-Wc-lOn"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKw-o1-dbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565" y="355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uOU-e4-IsX">
@@ -133,6 +158,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdX-Fe-APS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1207" y="355"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="91h-8R-0nM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uig-XX-3kG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fv7-e6-1sQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NSd-MT-uEp" kind="relationship" relationship="rootViewController" id="4hj-ge-WBy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Enf-VN-3ZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2129" y="355"/>
         </scene>
     </scenes>
     <resources>

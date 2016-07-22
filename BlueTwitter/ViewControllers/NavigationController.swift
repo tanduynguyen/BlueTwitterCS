@@ -8,14 +8,11 @@
 
 import UIKit
 
-struct Colors {
-    static let primary = UIColor(red:133.0/255, green:182.0/255, blue:231.0/255, alpha:0.90)
-}
 
 class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
-        navigationBar.barTintColor = Colors.primary
+        navigationBar.barTintColor = Configuration.Colors.primary
         navigationBar.barStyle = .Black
         navigationBar.tintColor = UIColor.whiteColor()
         

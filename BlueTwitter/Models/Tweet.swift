@@ -19,6 +19,7 @@ extension Bool {
 }
 
 class Tweet: NSObject {
+    var id: String?
     var user: User?
     var userMention: User?
     var text: String?
@@ -37,6 +38,7 @@ class Tweet: NSObject {
     init(dictionary: NSDictionary) {
         
         user = User(dictionary: dictionary["user"] as! NSDictionary)
+        id = dictionary["id_str"] as? String
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int)!

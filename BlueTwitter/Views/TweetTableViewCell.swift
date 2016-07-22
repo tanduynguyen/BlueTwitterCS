@@ -84,6 +84,7 @@ class TweetTableViewCell: UITableViewCell {
             }
             
             updateConstraints()
+            setNeedsLayout()
         }
     }
     

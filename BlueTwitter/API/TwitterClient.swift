@@ -7,21 +7,40 @@
 //
 
 import BDBOAuth1Manager
+import AFNetworking
 
 class TwitterClient: BDBOAuth1SessionManager {
     
-    static let consumerKey = "FoU1uykMbBdCfsiJ8swOT1Mez"
-    static let consumerSecret = "Um1oj2plEOeXBXFFOau3SoYVR0KCVEhp9b9dc6PHkd9qfCqS9T"
-    static let configURL = "https://api.twitter.com"
+    struct APIScheme {
+        static let callbackURL = "bluetwittercs://oauth"
+        static let BaseUrl = NSURL(string: "https://api.twitter.com")
+        static let UploadUrl = NSURL(string: "https://upload.twitter.com")
+        static let requestTokenEndPoint = "https://api.twitter.com/oauth/authorize?oauth_token="
+        
+        static let OAuthRequestTokenEndpoint = "oauth/request_token"
+        static let OAuthAccessTokenEndpoint = "oauth/access_token"
+        static let UserCredentialEndpoint = "1.1/account/verify_credentials.json"
+        static let HomeTimelineEndpoint = "1.1/statuses/home_timeline.json"
+        static let MentionsTimelineEndpoint = "1.1/statuses/mentions_timeline.json"
+        static let ShowStatusEndpoint = "1.1/statuses/show/:id.json"
+        static let UpdateStatusEndpoint = "1.1/statuses/update.json"
+        static let RetweetStatusEndpoint = "1.1/statuses/retweet/:id.json"
+        static let RetweetsOfStatusEndpoint = "1.1/statuses/retweets/:id.json"
+        static let DestroyStatusEndpoint = "1.1/statuses/destroy/:id.json"
+        static let FavoriteCreateEndpoint = "1.1/favorites/create.json"
+        static let FavoriteDestroyEndpoint = "1.1/favorites/destroy.json"
+        static let MediaUploadEndpoint = "1.1/media/upload.json"
+    }
     
-    static let shareInstance = TwitterClient(baseURL: NSURL(string: configURL), consumerKey: consumerKey, consumerSecret: consumerSecret)
+    static let shareInstance = TwitterClient(baseURL: APIScheme.BaseUrl, consumerKey: Configuration.consumerKey, consumerSecret: Configuration.consumerSecret)
     
     var loginSuccess: (() -> ())?
     var loginFailure: ((NSError) -> ())?
+
     
     func currentAccount(success: (User) -> (), failure: (NSError) -> ()) {
 
-        GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+        GET(APIScheme.UserCredentialEndpoint, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
             
             let userDictionary = response as! NSDictionary
             let user = User(dictionary: userDictionary)
@@ -35,7 +54,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()) {
 
-        GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+        GET(APIScheme.HomeTimelineEndpoint, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
             let dictionaries = response as! [NSDictionary]
             let tweets = Tweet.tweetsWithArray(dictionaries)
             
@@ -52,10 +71,11 @@ class TwitterClient: BDBOAuth1SessionManager {
         loginFailure = failure
         
         deauthorize()
-        fetchRequestTokenWithPath("oauth/request_token", method: "POST", callbackURL: NSURL(string: "bluetwittercs://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) in
+        fetchRequestTokenWithPath(APIScheme.OAuthRequestTokenEndpoint, method: "POST", callbackURL: NSURL(string: APIScheme.callbackURL), scope: nil, success: { (requestToken: BDBOAuth1Credential!) in
             
 //            print("I got request token = \(requestToken.token)")
-            let authUrl = NSURL(string: "\(Configuration.baseURL)/oauth/authorize?oauth_token=\(requestToken.token)")!
+            let authUrl = NSURL(string:
+                APIScheme.requestTokenEndPoint.stringByAppendingString(requestToken.token))!
             UIApplication.sharedApplication().openURL(authUrl)
             
         }) { (error: NSError!) in
@@ -66,7 +86,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     func handleOpenUrl(url: NSURL) {
         
         let requestToken = BDBOAuth1Credential(queryString: url.query)
-        TwitterClient.shareInstance.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) in
+        TwitterClient.shareInstance.fetchAccessTokenWithPath(APIScheme.OAuthAccessTokenEndpoint, method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) in
 //            print("I got access token = \(accessToken.token)")
             
             self.currentAccount({ (user) in
@@ -86,4 +106,27 @@ class TwitterClient: BDBOAuth1SessionManager {
         User.currentUser = nil
         deauthorize()
     }
+    
+    
+    static func updateStatus(status: String, inResponseToStatusId replyStatusId: String?, andMediaIds mediaIds: [String]?, withCompletion success: (response: NSDictionary?) -> (), failure: (NSError) -> ()) {
+        
+        let parameters = NSMutableDictionary()
+        parameters["status"] = status
+        if let replyStatusId = replyStatusId {
+            parameters["in_reply_to_status_id"] = replyStatusId
+        }
+        
+        if let mediaIds = mediaIds {
+            parameters["media_ids"] = mediaIds.joinWithSeparator(",")
+        }
+        
+        TwitterClient.shareInstance.POST(APIScheme.UpdateStatusEndpoint, parameters: parameters, progress: nil, success:{ (task, response) in
+            let retweetResponse =  response as? NSDictionary
+            success(response: retweetResponse)
+        }) { (task, error) in
+            failure(error)
+        }
+        
+    }
+
 }

@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
                 self.performSegueWithIdentifier("loginSegue", sender: nil)
         }) { (error) in
             print("\(error.localizedDescription)")
+            Helper.showAlert("Error", message: error.description, inNavigationController: self.navigationController!)
         }
     }
     

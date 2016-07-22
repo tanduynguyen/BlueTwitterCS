@@ -8,6 +8,7 @@
 
 import UIKit
 import RevealingSplashView
+import MBProgressHUD
 
 class TweetsViewController: UIViewController {
     
@@ -23,7 +24,18 @@ class TweetsViewController: UIViewController {
         setupTableView()
         setupSplashScreen()
         setupPullRefresh()
-        revealingSplashView?.startAnimation()
+        addNotification()
+        revealingSplashView?.startAnimation() {
+            self.revealingSplashView.removeFromSuperview()
+            self.revealingSplashView = nil
+        }
+        
+//        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.getHomeTimeline), userInfo: nil, repeats: true)
+    }
+    
+    func addNotification() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.getHomeTimeline), name: Configuration.composeFinishedNotificationKey, object: nil)
     }
     
     func setupTableView() {
@@ -49,22 +61,33 @@ class TweetsViewController: UIViewController {
     func setupPullRefresh() {
         // Initialize a UIRefreshControl
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(getHomeTimeline(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(getHomeTimeline), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
-        getHomeTimeline(nil)
+        getHomeTimeline()
     }
     
-    func getHomeTimeline(refreshControl: UIRefreshControl?) {
+    func getHomeTimeline() {
+        
+        if revealingSplashView == nil {
+            
+            let hub = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hub.bezelView.color = Configuration.Colors.primary
+        }
         
         TwitterClient.shareInstance.homeTimeline({ (twitters) in
             
             self.twitters = twitters
             self.tableView.reloadData()
             
-            refreshControl?.endRefreshing()
+            self.refreshControl?.endRefreshing()
             
+            let scrollIndexPath: NSIndexPath = NSIndexPath(forRow:NSNotFound , inSection: 0)
+            self.tableView.scrollToRowAtIndexPath(scrollIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }) { (error) in
             print("\(error.localizedDescription)")
+            
+            Helper.showAlert("Error", message: error.description, inNavigationController: self.navigationController!)
         }
             
 
@@ -93,11 +116,6 @@ extension TweetsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? TweetTableViewCell
         
         let tweet = twitters![indexPath.row] as Tweet
-
-//        if cell == nil {
-//            tableView.registerNib(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
-//            cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? TweetTableViewCell
-//        }
         
         cell?.tweet = tweet
         

@@ -119,9 +119,9 @@ extension DetailsViewController: UserActionViewCellDelegate {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             NSNotificationCenter.defaultCenter().postNotificationName(Configuration.composeFinishedNotificationKey, object: nil)
             }) { (error) in
-                print("\(error.localizedDescription)")
+                print("\(error.description)")
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
-                Helper.showAlert("Error", message: error.description, inNavigationController: self.navigationController!)
+                Helper.showAlert("Error", message: error.localizedDescription, inNavigationController: self.navigationController!)
         }
     }
  
@@ -139,9 +139,9 @@ extension DetailsViewController: UserActionViewCellDelegate {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             NSNotificationCenter.defaultCenter().postNotificationName(Configuration.composeFinishedNotificationKey, object: nil)
         }) { (error) in
-            print("\(error.localizedDescription)")
+            print("\(error.description)")
             MBProgressHUD.hideHUDForView(self.view, animated: true)
-            Helper.showAlert("Error", message: error.description, inNavigationController: self.navigationController!)
+            Helper.showAlert("Error", message: error.localizedDescription, inNavigationController: self.navigationController!)
         }
 
     }

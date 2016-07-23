@@ -10,8 +10,8 @@ import UIKit
 
 class Configuration: NSObject {
     
-    static let consumerKey = "FoU1uykMbBdCfsiJ8swOT1Mez"
-    static let consumerSecret = "Um1oj2plEOeXBXFFOau3SoYVR0KCVEhp9b9dc6PHkd9qfCqS9T"
+    static let consumerKey = "ud7Gg9U28yVG5k3HOfZ7NBr1J"
+    static let consumerSecret = "KD70sYrvjGLgDHBvLNZYxrWsiG3ZSULr5WbvyJQYjKeG5lZxDE"
     
     static let composeFinishedNotificationKey = "composeFinishedNotificationKey"
     static let characterLimit = 140

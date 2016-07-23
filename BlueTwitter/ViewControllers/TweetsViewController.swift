@@ -99,7 +99,7 @@ class TweetsViewController: UIViewController {
             }
             
         }) { (error) in
-            print("\(error.localizedDescription)")
+            print("\(error.description)")
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             Helper.showAlert("Error", message: "Please try to login again!", inNavigationController: self.navigationController!)
         }

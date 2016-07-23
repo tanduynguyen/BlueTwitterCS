@@ -2,7 +2,7 @@
 
 **BlueTwitterCS** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **23** hours spent in total
+Time spent: **30** hours spent in total
 
 ## User Stories
 
@@ -28,7 +28,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Upload photos & include location
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -39,7 +39,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Demo](images/demoappYelp.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

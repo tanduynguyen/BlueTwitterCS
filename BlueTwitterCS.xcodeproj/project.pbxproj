@@ -26,8 +26,6 @@
 		04A9F5A71D3F70B300C104C8 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A61D3F70B300C104C8 /* TweetsViewController.swift */; };
 		04A9F5A91D3F725300C104C8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A9F5A81D3F725300C104C8 /* LoginViewController.swift */; };
 		04AB0BF81D407F9B0022F65F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB0BF71D407F9B0022F65F /* NavigationController.swift */; };
-		04AB0BFB1D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 04AB0BF91D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig */; };
-		04AB0BFC1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 04AB0BFA1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig */; };
 		04AB0C021D4091A20022F65F /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB0C001D4091A20022F65F /* TweetTableViewCell.swift */; };
 		04AB0C031D4091A20022F65F /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AB0C011D4091A20022F65F /* TweetTableViewCell.xib */; };
 		D12E10DDCFAD72485E49DA1A /* Pods_BlueTwitterCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F72376F5C93D4C77BD5E821 /* Pods_BlueTwitterCS.framework */; };
@@ -233,12 +231,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04AB0BFC1D4085480022F65F /* Pods-BlueTwitterCS.release.xcconfig in Resources */,
 				04AB0C031D4091A20022F65F /* TweetTableViewCell.xib in Resources */,
 				049C2D8C1D3E5C8D00915EB6 /* LaunchScreen.storyboard in Resources */,
 				049C2D891D3E5C8D00915EB6 /* Assets.xcassets in Resources */,
 				049C2D871D3E5C8D00915EB6 /* Main.storyboard in Resources */,
-				04AB0BFB1D4085480022F65F /* Pods-BlueTwitterCS.debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -415,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -428,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BlueTwitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zwoomobile.BlueTwitterCS;
 				PRODUCT_NAME = BlueTwitterCS;
@@ -440,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BlueTwitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zwoomobile.BlueTwitterCS;
 				PRODUCT_NAME = BlueTwitterCS;

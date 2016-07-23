@@ -8,6 +8,7 @@
 
 import BDBOAuth1Manager
 import AFNetworking
+import MapKit
 
 class TwitterClient: BDBOAuth1SessionManager {
     
@@ -33,6 +34,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     static let shareInstance = TwitterClient(baseURL: APIScheme.BaseUrl, consumerKey: Configuration.consumerKey, consumerSecret: Configuration.consumerSecret)
+    static let shareUploadInstace = TwitterClient(baseURL: APIScheme.UploadUrl, consumerKey: Configuration.consumerKey, consumerSecret: Configuration.consumerSecret)
     
     var loginSuccess: (() -> ())?
     var loginFailure: ((NSError) -> ())?
@@ -113,7 +115,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     
-    static func updateStatus(status: String, inResponseToStatusId replyStatusId: String?, andMediaIds mediaIds: [String]?, withCompletion success: (response: NSDictionary?) -> (), failure: (NSError) -> ()) {
+    static func updateStatus(status: String, inResponseToStatusId replyStatusId: String?, andMediaIds mediaIds: [String]?, andLocation location: CLLocation?, withCompletion success: (response: NSDictionary?) -> (), failure: (NSError) -> ()) {
         
         let parameters = NSMutableDictionary()
         parameters["status"] = status
@@ -123,6 +125,12 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         if let mediaIds = mediaIds {
             parameters["media_ids"] = mediaIds.joinWithSeparator(",")
+        }
+        
+        if let currLocation = location {
+            parameters["lat"] = currLocation.coordinate.latitude
+            parameters["long"] = currLocation.coordinate.longitude
+            parameters["display_coordinates"] = true
         }
         
         TwitterClient.shareInstance.POST(APIScheme.UpdateStatusEndpoint, parameters: parameters, progress: nil, success:{ (task, response) in
@@ -152,6 +160,18 @@ class TwitterClient: BDBOAuth1SessionManager {
         TwitterClient.shareInstance.POST(useEndpoint, parameters: nil, progress: nil, success:{ (task, response) in
             let retweetResponse = response as? NSDictionary
             completion(response: retweetResponse)
+        }) { (task, error) in
+            failure(error)
+        }
+    }
+
+    static func uploadMedia(media: NSData, withCompletion completion: (response: NSDictionary?) -> (), failure: (NSError) -> ()) {
+        
+        TwitterClient.shareUploadInstace.POST(APIScheme.MediaUploadEndpoint, parameters: nil, constructingBodyWithBlock: { (data: AFMultipartFormData!) -> Void in
+            data.appendPartWithFormData(media, name: "media")
+            }, progress: nil, success:{ (task, response) in
+                let retweetResponse = response as? NSDictionary
+                completion(response: retweetResponse)
         }) { (task, error) in
             failure(error)
         }

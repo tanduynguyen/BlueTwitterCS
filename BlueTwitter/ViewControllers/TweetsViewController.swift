@@ -17,6 +17,8 @@ class TweetsViewController: UIViewController {
     var twitters: [Tweet]?
     var revealingSplashView: RevealingSplashView!
     var refreshControl: UIRefreshControl!
+    var canFetchMoreResults = true
+    var lastId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +32,11 @@ class TweetsViewController: UIViewController {
             self.revealingSplashView = nil
         }
         
-//        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: #selector(self.getHomeTimeline), userInfo: nil, repeats: true)
     }
     
     func addNotification() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.getHomeTimeline), name: Configuration.composeFinishedNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.resetHomeTimeline), name: Configuration.composeFinishedNotificationKey, object: nil)
     }
     
     func setupTableView() {
@@ -62,29 +63,41 @@ class TweetsViewController: UIViewController {
     func setupPullRefresh() {
         // Initialize a UIRefreshControl
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(getHomeTimeline), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(resetHomeTimeline), forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        resetHomeTimeline()
+    }
+    
+    func resetHomeTimeline() {
+        lastId = nil
         getHomeTimeline()
     }
     
     func getHomeTimeline() {
         
-        if revealingSplashView == nil {
+        if revealingSplashView == nil && lastId == nil {
             
             let hub = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hub.bezelView.color = Configuration.Colors.primary
         }
         
-        TwitterClient.shareInstance.homeTimeline({ (twitters) in
+        TwitterClient.shareInstance.homeTimeline(withStatusId: lastId, success: { (userTweets) in
             
-            self.twitters = twitters
-            self.tableView.reloadData()
+            if self.lastId != nil {
+                let insertIndex = self.twitters!.count - 1
+                self.twitters!.last!.id == userTweets.first?.id ? self.twitters?.replaceRange(insertIndex...insertIndex, with: userTweets) : ()
+                self.tableView.reloadData()
+                
+            } else {
+                self.twitters = userTweets
+                self.tableView.reloadData()
+                let scrollIndexPath: NSIndexPath = NSIndexPath(forRow:NSNotFound , inSection: 0)
+                self.tableView.scrollToRowAtIndexPath(scrollIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+                
+                self.refreshControl?.endRefreshing()
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            }
             
-            self.refreshControl?.endRefreshing()
-            
-            let scrollIndexPath: NSIndexPath = NSIndexPath(forRow:NSNotFound , inSection: 0)
-            self.tableView.scrollToRowAtIndexPath(scrollIndexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }) { (error) in
             print("\(error.localizedDescription)")
             MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -138,6 +151,7 @@ extension TweetsViewController: UITableViewDataSource {
         
         return cell!
     }
+    
 }
 
 extension TweetsViewController: UITableViewDelegate {
@@ -145,5 +159,13 @@ extension TweetsViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         self.performSegueWithIdentifier("detailSegue", sender: indexPath)
+    }
+    
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (twitters!.count - indexPath.row) == 4 && canFetchMoreResults {
+            lastId = twitters?.last?.id
+            getHomeTimeline()
+        }
     }
 }

@@ -52,9 +52,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()) {
+    func homeTimeline(withStatusId id: String?, success: ([Tweet]) -> (), failure: (NSError) -> ()) {
 
-        GET(APIScheme.HomeTimelineEndpoint, parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
+        let parameters = NSMutableDictionary()
+        if let id = id {
+            parameters["max_id"] = id
+        }
+        
+        GET(APIScheme.HomeTimelineEndpoint, parameters: parameters, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) in
             let dictionaries = response as! [NSDictionary]
             let tweets = Tweet.tweetsWithArray(dictionaries)
             

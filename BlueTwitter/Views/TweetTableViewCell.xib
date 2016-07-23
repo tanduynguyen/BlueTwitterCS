@@ -91,7 +91,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Yvk-KD-tOh">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Yvk-KD-tOh">
                         <rect key="frame" x="61" y="279" width="249" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Yvk-KD-tOh" secondAttribute="height" multiplier="4:3" id="5dc-Dz-Imd"/>

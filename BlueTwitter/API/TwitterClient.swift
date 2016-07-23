@@ -24,9 +24,9 @@ class TwitterClient: BDBOAuth1SessionManager {
         static let MentionsTimelineEndpoint = "1.1/statuses/mentions_timeline.json"
         static let ShowStatusEndpoint = "1.1/statuses/show/:id.json"
         static let UpdateStatusEndpoint = "1.1/statuses/update.json"
-        static let RetweetStatusEndpoint = "1.1/statuses/retweet/:id.json"
+        static let RetweetStatusEndpoint = "1.1/statuses/retweet/%@.json"
         static let RetweetsOfStatusEndpoint = "1.1/statuses/retweets/:id.json"
-        static let DestroyStatusEndpoint = "1.1/statuses/destroy/:id.json"
+        static let DestroyStatusEndpoint = "1.1/statuses/destroy/%@.json"
         static let FavoriteCreateEndpoint = "1.1/favorites/create.json"
         static let FavoriteDestroyEndpoint = "1.1/favorites/destroy.json"
         static let MediaUploadEndpoint = "1.1/media/upload.json"
@@ -127,6 +127,29 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         }
         
+    }
+    
+    static func updateFavoriteStatusWitId(id: String, status: Bool, WithCompletion success: (response: NSDictionary?) -> (), failure: (NSError) -> ()) {
+        let useEndpoint = status ? APIScheme.FavoriteCreateEndpoint : APIScheme.FavoriteDestroyEndpoint
+        TwitterClient.shareInstance.POST(useEndpoint, parameters: ["id": id], progress: nil, success:{ (task, response) in
+            let retweetResponse = response as? NSDictionary
+            success(response: retweetResponse)
+        }) { (task, error) in
+            failure(error)
+        }
+    }
+    
+    
+    static func updateTweetStatusWitId(id: String, status: Bool, WithCompletion completion:(response: NSDictionary?) -> (), failure: (NSError) -> ()) {
+        var useEndpoint = status ? APIScheme.RetweetStatusEndpoint : APIScheme.DestroyStatusEndpoint
+        useEndpoint = String(format: useEndpoint, id)
+        
+        TwitterClient.shareInstance.POST(useEndpoint, parameters: nil, progress: nil, success:{ (task, response) in
+            let retweetResponse = response as? NSDictionary
+            completion(response: retweetResponse)
+        }) { (task, error) in
+            failure(error)
+        }
     }
 
 }

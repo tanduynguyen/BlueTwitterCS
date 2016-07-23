@@ -41,6 +41,7 @@ class TweetsViewController: UIViewController {
     func setupTableView() {
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -86,12 +87,28 @@ class TweetsViewController: UIViewController {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }) { (error) in
             print("\(error.localizedDescription)")
-            
-            Helper.showAlert("Error", message: error.description, inNavigationController: self.navigationController!)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            Helper.showAlert("Error", message: "Please try to login again!", inNavigationController: self.navigationController!)
         }
             
-
     }
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "detailSegue" {
+            let indexPath = sender as! NSIndexPath
+            let vc = segue.destinationViewController as! DetailsViewController
+            let tweet = twitters![indexPath.row] as Tweet
+            
+            vc.tweet = tweet
+        }
+        
+    }
+    
 }
 
 extension TweetsViewController {
@@ -120,5 +137,13 @@ extension TweetsViewController: UITableViewDataSource {
         cell?.tweet = tweet
         
         return cell!
+    }
+}
+
+extension TweetsViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.performSegueWithIdentifier("detailSegue", sender: indexPath)
     }
 }

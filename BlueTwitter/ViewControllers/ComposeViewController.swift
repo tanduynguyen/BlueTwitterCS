@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ComposeViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var characterCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var replyToUserLabel: UILabel!
 
     var tweet: Tweet!
     
@@ -56,7 +58,11 @@ class ComposeViewController: UIViewController {
             }
             nameLabel.text = user.name
         }
-
+        
+        if let user = tweet.user {
+            replyToUserLabel.text = "Reply to " + user.name!
+            statusField.text = "@" + user.screenName! + " "
+        }
     }
 
     
@@ -68,17 +74,21 @@ class ComposeViewController: UIViewController {
     @IBAction func onTweet(sender: AnyObject) {
         
         statusField.resignFirstResponder()
-
+        
+        let hub = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hub.bezelView.color = Configuration.Colors.primary
+        
         TwitterClient.updateStatus(statusField.text, inResponseToStatusId: tweet?.id, andMediaIds: nil, withCompletion: { (response) in
             
             NSNotificationCenter.defaultCenter().postNotificationName(Configuration.composeFinishedNotificationKey, object: nil)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
             }) { (error) in
                 print("\(error.localizedDescription)")
-                
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
                 Helper.showAlert("Error", message: error.description, inNavigationController: self.navigationController!)
         }
 
-        onDismiss()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func onDismiss() {

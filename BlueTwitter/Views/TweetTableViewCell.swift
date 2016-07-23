@@ -32,8 +32,8 @@ class TweetTableViewCell: UITableViewCell {
         didSet {
             
             tweetLabel.text = tweet.text
-            retweetCountLabel.text = tweet.retweetCount > 0 ? String(tweet.retweetCount) : ""
-            favCountLabel.text = tweet.favCount > 0 ? String(tweet.favCount) : ""
+            retweetCountLabel.text = tweet.retweetCount > 0 ? Helper.getDecimalFormattedNumberString(NSNumber(integer: tweet.retweetCount)) : ""
+            favCountLabel.text = tweet.favCount > 0 ? Helper.getDecimalFormattedNumberString(NSNumber(integer: tweet.favCount)) : ""
             timeSinceCreatedLabel.text = tweet.timeSinceCreated
             
             if let userMention = tweet.userMention {

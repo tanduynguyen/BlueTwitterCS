@@ -21,4 +21,18 @@ class Helper: NSObject {
         alertVC.addAction(OKAction)
         nav.presentViewController(alertVC, animated: true, completion: nil)
     }
+    
+    
+    static func getPresentationDateString(sinceDate: NSDate) -> String {
+        let DateFormatter = NSDateFormatter()
+        DateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        DateFormatter.timeStyle = .ShortStyle
+        return DateFormatter.stringFromDate(sinceDate)
+    }
+    
+    static func getDecimalFormattedNumberString(number: NSNumber) -> String {
+        let NumberFormatter = NSNumberFormatter()
+        NumberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        return NumberFormatter.stringFromNumber(number)!
+    }
 }
